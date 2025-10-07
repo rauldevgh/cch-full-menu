@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCH Restaurant - Authentic Indian Cuisine</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #0f0f0f;
+            color: #333;
+        }
+        
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            color: white;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.4em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+        
+        .gateway-section {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .gateway-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+        }
+        
+        .gateway-section p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .menu-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(to bottom, #fff 0%, #faf8f5 100%);
+        }
+        
+        .menu-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #c17817;
+            margin-bottom: 15px;
+        }
+        
+        .menu-header p {
+            font-size: 1.1em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .menu-content {
+            padding: 40px 20px 80px;
+            background: #faf8f5;
+        }
+        
+        .menu-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #c17817;
+        }
+        
+        .section-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #2d2d2d;
+            font-weight: 600;
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #faf8f5;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .menu-item:hover {
+            background: #fff;
+            border-left-color: #c17817;
+            box-shadow: 0 4px 12px rgba(193, 120, 23, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .item-name {
+            font-size: 1.1em;
+            color: #2d2d2d;
+            font-weight: 400;
+            flex: 1;
+        }
+        
+        .item-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            color: #c17817;
+            font-weight: 600;
+            margin-left: 20px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-size: 1.5em;
+            color: #c17817;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero p {
+                font-size: 1em;
+            }
+            
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-section {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>CCH</h1>
+            <p>AUTHENTIC INDIAN CUISINE</p>
+        </div>
+    </div>
+    
+    <div class="gateway-section">
+        <h2>Journey to India</h2>
+        <p>Experience the rich flavors and aromatic spices of India, lovingly crafted from scratch using traditional recipes passed down through generations.</p>
+    </div>
+    
+    <div class="container">
+        <div class="menu-header">
+            <h2>Our Menu</h2>
+            <p>Made fresh daily with authentic Indian spices and ingredients</p>
+        </div>
+        
+        <div class="menu-content" id="menu-content">
+            <div class="loading">Loading menu...</div>
+        </div>
+    </div>
+
+    <script>
+        const SHEET_ID = '1Vg8yf1ruyrI8QidPPyuVFDd-LWZM15f0p1DrXs2PfII';
+        const SHEET_NAME = 'Sheet1';
+        const API_KEY = 'AIzaSyCqQWtzMvEReLuUqnW8YpDLzLYHdXyJu9k';
+        
+        const sectionIcons = {
+            'Appetizers': '🥟',
+            'Curry': '🍛',
+            'Tandoori': '🔥',
+            'Rice & Bread': '🍚',
+            'Bread': '🫓',
+            'Sides': '🥗',
+            'Desserts': '🍨',
+            'Drinks': '🥤'
+        };
+        
+        async function loadMenu() {
+            try {
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.values) {
+                    displayMenu(data.values);
+                } else {
+                    throw new Error('No data found');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('menu-content').innerHTML = `
+                    <div style="text-align: center; padding: 50px; color: #c17817;">
+                        <h3>Menu Loading Error</h3>
+                        <p>Using backup menu data...</p>
+                    </div>
+                `;
+                displayBackupMenu();
+            }
+        }
+        
+        function displayMenu(rows) {
+            const menuContent = document.getElementById('menu-content');
+            let html = '';
+            let currentSection = '';
+            let items = [];
+            
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                if (!row || row.length < 2) continue;
+                
+                const cellA = (row[0] || '').trim();
+                const cellB = (row[1] || '').trim();
+                
+                if (cellA && !cellB) {
+                    if (currentSection && items.length > 0) {
+                        html += createSection(currentSection, items);
+                        items = [];
+                    }
+                    currentSection = cellA;
+                } else if (cellA && cellB) {
+                    items.push({ name: cellA, price: cellB });
+                }
+            }
+            
+            if (currentSection && items.length > 0) {
+                html += createSection(currentSection, items);
+            }
+            
+            if (html) {
+                menuContent.innerHTML = html;
+            } else {
+                displayBackupMenu();
+            }
+        }
+        
+        function displayBackupMenu() {
+            const backupData = {
+                'Appetizers': [
+                    { name: 'Chicken 65', price: '$12.99' },
+                    { name: 'Gobi Manchurian', price: '$10.99' },
+                    { name: 'Veg. Samosa', price: '$6.99' },
+                    { name: 'Onion Bhaji', price: '$6.99' },
+                    { name: 'Chili Paneer', price: '$11.99' },
+                    { name: 'Chili Chicken', price: '$12.99' }
+                ],
+                'Curry': [
+                    { name: 'Paneer tikka masala', price: '$16.99' },
+                    { name: 'Chana Masala', price: '$14.99' },
+                    { name: 'Dal Tadka', price: '$13.99' },
+                    { name: 'Butter Chicken', price: '$16.99' },
+                    { name: 'Kadhai Chicken', price: '$16.99' },
+                    { name: 'Chicken Rogan Josh', price: '$16.99' },
+                    { name: 'Lamb Vindaloo', price: '$18.99' },
+                    { name: 'Veg. Korma', price: '$15.99' },
+                    { name: 'Kadhai Paneer', price: '$16.99' },
+                    { name: 'Chicken Tikka Masala', price: '$16.99' },
+                    { name: 'Lamb Korma', price: '$18.99' },
+                    { name: 'Goat Curry', price: '$18.99' },
+                    { name: 'Chicken Vindaloo', price: '$16.99' },
+                    { name: 'Shrimp Tikka Masala', price: '$18.99' }
+                ],
+                'Tandoori': [
+                    { name: 'Tandoori Chicken', price: '$17.99' },
+                    { name: 'Malai Chicken Tikka', price: '$17.99' },
+                    { name: 'Paneer Tikka', price: '$16.99' },
+                    { name: 'Tandoori Salmon', price: '$18.99' },
+                    { name: 'Lamb Seekh Kebab', price: '$20.99' },
+                    { name: 'Chicken Tikka', price: '$17.99' },
+                    { name: 'Lamb Chops', price: '$23.99' },
+                    { name: 'Tandoori Shrimp', price: '$18.99' }
+                ],
+                'Rice & Bread': [
+                    { name: 'Steam Rice', price: '$3.99' },
+                    { name: 'Jeera Rice', price: '$4.99' },
+                    { name: 'Tawa Biryani - Veg', price: '$15.99' },
+                    { name: 'Tawa Biryani - Chicken', price: '$16.99' },
+                    { name: 'Tawa Biryani - Goat', price: '$17.99' },
+                    { name: 'Cheese Naan', price: '$4.99' },
+                    { name: 'Garlic Naan', price: '$3.99' },
+                    { name: 'Butter Naan', price: '$2.99' },
+                    { name: 'Tandoori Roti', price: '$2.99' },
+                    { name: 'Onion Kulcha', price: '$3.99' },
+                    { name: 'Chili Naan', price: '$3.99' },
+                    { name: 'Chili Cheese Naan', price: '$5.99' }
+                ],
+                'Sides': [
+                    { name: 'Masala Papad', price: '$3.99' },
+                    { name: 'Raita', price: '$3.99' },
+                    { name: 'Roasted Papad', price: '$1.99' },
+                    { name: 'Plain Yogurt', price: '$1.99' },
+                    { name: 'Mint Chutney', price: '$2.99' },
+                    { name: 'Pickle', price: '$1.49' },
+                    { name: 'Masala Fries', price: '$4.99' },
+                    { name: 'Green Salad', price: '$3.99' }
+                ],
+                'Desserts': [
+                    { name: 'Mango lassi', price: '$4.99' },
+                    { name: 'Falooda', price: '$5.99' },
+                    { name: 'Rasmalai', price: '$3.99' },
+                    { name: 'Gulab Jamun', price: '$3.99' },
+                    { name: 'Ice Cream (Strawberry, Pistachio)', price: '$3.99' },
+                    { name: 'Masala Tea', price: '$3.99' }
+                ],
+                'Drinks': [
+                    { name: 'Lemon soda (Sweet & salty)', price: '$3.99' },
+                    { name: 'Thumps up', price: '$1.49' },
+                    { name: 'Fanta', price: '$1.49' },
+                    { name: 'Coke', price: '$1.49' },
+                    { name: 'Diet Coke', price: '$1.49' },
+                    { name: 'Sprite', price: '$1.49' },
+                    { name: 'Coke zero', price: '$1.49' },
+                    { name: 'Pepsi', price: '$1.49' },
+                    { name: 'Fiji water', price: '$3.49' },
+                    { name: 'Perrier(Sparkling)', price: '$3.99' }
+                ]
+            };
+            
+            let html = '';
+            for (const [section, items] of Object.entries(backupData)) {
+                html += createSection(section, items);
+            }
+            document.getElementById('menu-content').innerHTML = html;
+        }
+        
+        function createSection(title, items) {
+            const icon = sectionIcons[title] || '✨';
+            
+            const itemsHtml = items.map(item => `
+                <div class="menu-item">
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-price">${item.price}</span>
+                </div>
+            `).join('');
+            
+            return `
+                <div class="menu-section">
+                    <div class="section-header">
+                        <span class="section-icon">${icon}</span>
+                        <h3 class="section-title">${title}</h3>
+                    </div>
+                    <div class="items-grid">
+                        ${itemsHtml}
+                    </div>
+                </div>
+            `;
+        }
+        
+        loadMenu();
+        setInterval(loadMenu, 300000);
+    </script>
+</body>
+</html>
